@@ -1,0 +1,92 @@
+@model RoomInventoryItemViewModel;
+
+<div class="section-container">
+    <table class="table-detail">
+        <tr>
+            <td>Room Number</td>
+            <td id="roomNumber">@Model.RoomNumber</td>
+        </tr>
+        <tr>
+            <td>Room Floor</td>
+            <td>@Model.Floor</td>
+        </tr>
+        <tr>
+            <td>Room Type</td>
+            <td>@Model.RoomType</td>
+        </tr>
+        <tr>
+            <td>Guest Limit</td>
+            <td>@Model.GuestLimit</td>
+        </tr>
+    </table>
+    <input id="button" type="button" value="Add new item" class="add">
+    <div class="table">
+        <table class="table-main">
+            <thead>
+                <tr>
+                    <th>Action</th>
+                    <th>Inventory</th>
+                    <th>Stock</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.RoomInventories)
+                {
+                    <tr>
+                        <td>
+                            <a asp-controller="Room" asp-action="DeleteRoomInventory" asp-route-id="@item.Id"><button type="submit">Remove</button></a>
+                        </td>
+                        <td>@item.InventoryName</td>
+                        <td>@item.Stock</td>
+                        <td>@item.Quantity</td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr class="tr-tfoot">
+                    @* <td><span>Page 1 of 1</span></td> *@
+                    @* <td colspan="4">
+                        @if (Model != null) {
+                            <span>
+                                @for (int pageNumber = 1; pageNumber <= Model.Pagination.TotalPages; pageNumber++) {
+                                    <a asp-action="Index" asp-route-pageNumber="@pageNumber">@pageNumber</a>
+                                }
+                            </span>
+                        }
+                    </td> *@
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+<div class="modal">
+    <form action="" method="post" class="form-modal">
+        <table class="table-modal">
+            <tr class="tr-modal">
+                <td class="td-modal"><label for="">Inventory</label></td>
+                <td class="td-modal">
+                    <select id="inventory-dropdown">
+                        <option value="">Select Inventory</option>
+                    </select>
+                </td>
+            </tr>
+            <tr class="tr-modal">
+                <td class="td-modal"><label for="">Quantity</label></td>
+                <td class="td-modal"><input type="number" id="quantity"></td>
+            </tr>
+            <tr class="tr-modal">
+                <td class="td-modal"></td>
+                <td class="td-modal">
+                    <button type="submit" class="insert-roominventory">Save</button>
+                    <button type="submit" class="close-roominventory">Close</button>
+                </td>
+            </tr>
+        </table>
+        <div>
+        </div>
+    </form>
+</div>
+
+<script src="~/js/roominventory-script.js" defer></script>

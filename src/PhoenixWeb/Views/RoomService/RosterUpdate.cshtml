@@ -1,0 +1,78 @@
+@model RoomServiceRosterUpdateViewModel;
+
+<div class="section-container">
+    <form action="" method="post">
+        <table class="table-detail">
+            <tr>
+                <td><label asp-for="@Model.EmployeeNumber">@Model.EmployeeNumber</label></td>
+            </tr>
+            <tr>
+                <td>
+                    <label>@Model.FirstName @Model.MiddleName @Model.LastName</label>
+                    <input asp-for="@Model.FirstName" hidden>
+                    <input asp-for="@Model.MiddleName" hidden>
+                    <input asp-for="@Model.LastName" hidden>
+                </td>
+            </tr>
+            <tr>
+                <td><label asp-for="@Model.OutsourcingCompany">@Model.OutsourcingCompany</label></td>
+                <td><input asp-for="@Model.OutsourcingCompany" hidden></td>
+            </tr>
+        </table>
+
+        <button type="submit" id="button">Save Roster</button>
+        <div class="table">
+            <table class="table-detail">
+                <tr>
+                    <td>Monday</td>
+                    <td>
+                        <input type="time" asp-for="@Model.MondayRosterStart"> - <input type="time"
+                            asp-for="@Model.MondayRosterFinish">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Tuesday</td>
+                    <td>
+                        <input type="time" asp-for="@Model.TuesdayRosterStart"> - <input type="time"
+                            asp-for="@Model.TuesdayRosterFinish">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Wednesday</td>
+                    <td>
+                        <input type="time" asp-for="@Model.WednesdayRosterStart"> - <input type="time"
+                            asp-for="@Model.WednesdayRosterFinish">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Thursday</td>
+                    <td>
+                        <input type="time" asp-for="@Model.ThursdayRosterStart"> - <input type="time"
+                            asp-for="@Model.ThursdayRosterFinish">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Friday</td>
+                    <td>
+                        <input type="time" asp-for="@Model.FridayRosterStart"> - <input type="time"
+                            asp-for="@Model.FridayRosterFinish">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Saturday</td>
+                    <td>
+                        <input type="time" asp-for="@Model.SaturdayRosterStart"> - <input type="time"
+                            asp-for="@Model.SaturdayRosterFinish">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Sunday</td>
+                    <td>
+                        <input type="time" asp-for="@Model.SundayRosterStart"> - <input type="time"
+                            asp-for="@Model.SundayRosterFinish">
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</div>

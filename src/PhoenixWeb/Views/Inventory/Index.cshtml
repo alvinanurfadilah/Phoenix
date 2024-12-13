@@ -1,0 +1,75 @@
+@model InventoryIndexViewModel;
+
+<div class="section-container">
+    <input id="button" type="button" value="Add new inventory" class="add">
+    <div class="table">
+        <table class="table-main">
+            <thead>
+                <tr>
+                    <th>Action</th>
+                    <th>Name</th>
+                    <th>Stock</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Inventories) {
+                    <tr>
+                        <td>
+                            <button type="submit" value="@item.Name" class="inventory-edit">Edit</button>
+                            <a asp-action="Delete" asp-controller="Inventory" asp-route-name="@item.Name"><button type="submit">Delete</button></a>
+                        </td>
+                        <td>@item.Name</td>
+                        <td>@item.Stock</td>
+                        <td>@item.Description</td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr class="tr-tfoot">
+                    @* <td><span>Page 1 of 1</span></td> *@
+                    <td colspan="4">
+                        @if (Model != null) {
+                            <span>
+                                @for (int pageNumber = 1; pageNumber <= Model.Pagination.TotalPages; pageNumber++) {
+                                    <a asp-action="Index" asp-route-pageNumber="@pageNumber">@pageNumber</a>
+                                }
+                            </span>
+                        }
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+<div class="modal">
+    <form action="" method="post" class="form-modal">
+        <table class="table-modal">
+            <tr class="tr-modal">
+                <td class="td-modal"><label for="">Name</label></td>
+                <td class="td-modal"><input type="text" id="name"></td>
+            </tr>
+            <tr class="tr-modal">
+                <td class="td-modal"><label for="">Stock</label></td>
+                <td class="td-modal"><input type="number" id="stock"></td>
+            </tr>
+            <tr class="tr-modal">
+                <td class="td-modal"><label for="">Description</label></td>
+                <td class="td-modal"><textarea id="description" cols="30" rows="10"></textarea></td>
+            </tr>
+            <tr class="tr-modal">
+                <td class="td-modal"></td>
+                <td class="td-modal">
+                    <button type="submit" class="insert-inventory">Save</button>
+                    <button type="submit" class="update-inventory">Save</button>
+                    <button type="submit" class="close-inventory">Close</button>
+                </td>
+            </tr>
+        </table>
+        <div>
+        </div>
+    </form>
+</div>
+
+<script src="~/js/inventory-script.js" defer></script>

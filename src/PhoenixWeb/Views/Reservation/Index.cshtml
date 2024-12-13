@@ -1,0 +1,90 @@
+@model ReservationIndexViewModel;
+
+<div class="section-container">
+    <form class="search" action="" method="get">
+        <input asp-for="@Model.RoomNumber" type="text" id="button" placeholder="Room Number">
+        <input asp-for="@Model.GuestUsername" type="text" id="button" placeholder="Username">
+        <input asp-for="@Model.BookDate" type="date" id="button">
+        <button id="button" type="submit">Search</button>
+    </form>
+    <input id="button" type="button" value="Total Income" class="add">
+    <div class="table">
+        <table class="table-main">
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Room Number</th>
+                    <th>Username</th>
+                    <th>Book Date</th>
+                    <th>Check In</th>
+                    <th>Check Out</th>
+                    <th>Payment Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Reservations)
+                {
+                    <tr>
+                        <td><a asp-action="ReservationDetail" asp-controller="Reservation" asp-route-code="@item.Code">@item.Code</a></td>
+                        <td>@item.RoomNumber</td>
+                        <td>@item.GuestUsername</td>
+                        <td>@item.BookDate</td>
+                        <td>@item.CheckIn</td>
+                        <td>@item.CheckOut</td>
+                        <td>@item.PaymentDate</td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr class="tr-tfoot">
+                    @* <td><span>Page 1 of 1</span></td> *@
+                    <td colspan="7">
+                        @if (Model != null) {
+                            <span>
+                                @for (int pageNumber = 1; pageNumber <= Model.Pagination.TotalPages; pageNumber++) {
+                                    <a asp-action="Index" asp-route-pageNumber="@pageNumber" asp-route-roomNumber="@Model.RoomNumber" asp-route-guestUsername="@Model.GuestUsername" asp-route-bookDate="@Model.BookDate">@pageNumber</a>
+                                }
+                            </span>
+                        }
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+<div class="modal">
+    <form action="" method="post" class="form-modal">
+        <table class="table-modal">
+            <tr class="tr-modal">
+                <td class="td-modal">
+                    <select id="month-dropdown">
+                    </select>
+                </td>
+            </tr>
+            <tr class="tr-modal">
+                <td class="td-modal">
+                    <select id="year-dropdown">
+                    </select>
+                </td>
+            </tr>
+            <tr class="tr-modal">
+                <td class="td-modal"><input type="button" value="Check" id="check"></td>
+            </tr>
+            <tr>
+                <td>
+                    <label id="total-income"></label>
+                </td>
+            </tr>
+            <tr class="tr-modal">
+                <td class="td-modal">
+                    <button type="submit" class="close-reservation">Close</button>
+                </td>
+            </tr>
+        </table>
+        <div>
+        </div>
+    </form>
+</div>
+
+<script src="~/js/reservation-script.js" defer></script>

@@ -1,0 +1,23 @@
+@using System.Security.Claims;
+@{
+    string? username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? string.Empty;
+}
+<div>
+    <ul>
+        <a asp-controller="Dashboard" asp-action="Index"><li>Dashboard</li></a>
+        @if(User.FindFirst(ClaimTypes.Role)?.Value == "Admin")
+        {
+            <a asp-controller="Administrator" asp-action="Index"><li>Account</li></a>
+            <a asp-controller="Room" asp-action="Index"><li>Room</li></a>
+            <a asp-controller="Inventory" asp-action="Index"><li>Inventory</li></a>
+            <a asp-controller="RoomService" asp-action="Index"><li>Room Service</li></a>
+            <a asp-controller="Reservation" asp-action="Index"><li>Reservation Log</li></a>
+        }
+        
+        @if(User.FindFirst(ClaimTypes.Role)?.Value == "Guest")
+        {
+            <a asp-controller="Booking" asp-action="Index"><li>Booking</li></a>
+            <a asp-controller="Room" asp-action="GetMyRoom" asp-route-roomNumber="R003" asp-route-guestUsername="@username"><li>My Room</li></a>
+        }
+    </ul>
+</div>

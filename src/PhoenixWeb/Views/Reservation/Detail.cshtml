@@ -1,0 +1,63 @@
+@model ReservationViewModel;
+
+<div class="section-container-left">
+    <table class="table-detail">
+        <tr>
+            <td>Reservation Code</td>
+            <td>@Model.Code</td>
+        </tr>
+        <tr>
+            <td>Reservation Method</td>
+            <td>@Model.ReservationMethod</td>
+        </tr>
+        <tr>
+            <td>Room Number</td>
+            <td>@Model.RoomNumber</td>
+        </tr>
+        <tr>
+            <td>Room Floor</td>
+            <td>@Model.Floor</td>
+        </tr>
+        <tr>
+            <td>Room Type</td>
+            <td>@Model.RoomType</td>
+        </tr>
+        <tr>
+            <td>Guest Username</td>
+            <td>@Model.GuestUsername</td>
+        </tr>
+        <tr>
+            <td>Guest FullName</td>
+            <td>@Model.GuestFullName</td>
+        </tr>
+        <tr>
+            <td>Book Date</td>
+            <td>@Model.BookDate</td>
+        </tr>
+        <tr>
+            <td>Check In</td>
+            <td>@Model.CheckIn</td>
+        </tr>
+        <tr>
+            <td>Check Out</td>
+            <td>@Model.CheckOut</td>
+        </tr>
+        <tr>
+            <td>Cost</td>
+            <td>@Model.Cost</td>
+        </tr>
+        <tr>
+            <td>Payment Date</td>
+            <td>@Model.PaymentDate</td>
+        </tr>
+        <tr>
+            <td>Payment Method</td>
+            <td>@Model.PaymentMethod</td>
+        </tr>
+        <tr>
+            <td>Remark</td>
+            <td>@Model.Remark</td>
+        </tr>
+    </table>
+    <a asp-action="Index" asp-controller="Reservation"><input id="button" type="button" value="Back"></a>
+</div>

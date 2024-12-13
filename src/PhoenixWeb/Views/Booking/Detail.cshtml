@@ -1,0 +1,32 @@
+@model BookingDetailViewModel;
+
+<div class="section-container-left">
+    <table class="table-detail">
+        <tr>
+            <td>Room Number</td>
+            <td>@Model.Number</td>
+        </tr>
+        <tr>
+            <td>Floor</td>
+            <td>@Model.Floor</td>
+        </tr>
+        <tr>
+            <td>Type</td>
+            <td>@Model.RoomType</td>
+        </tr>
+        <tr>
+            <td>Guest Limit</td>
+            <td>@Model.GuestLimit</td>
+        </tr>
+        <tr>
+            <td>Cost</td>
+            <td>@Model.Cost</td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td>@Model.Description</td>
+        </tr>
+    </table>
+    <a asp-action="Add" asp-controller="Reservation" asp-route-number="@Model.Number"><input id="button" type="button" value="Make Reservation"></a>
+    <a asp-action="Index" asp-controller="Booking"><input id="button" type="button" value="Cancel"></a>
+</div>

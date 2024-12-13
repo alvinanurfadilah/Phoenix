@@ -1,0 +1,89 @@
+@model RoomServiceIndexViewModel;
+
+<div class="section-container">
+    <form class="search" action="" method="get">
+        <input asp-for="@Model.EmployeeNumber" type="text" id="button" placeholder="Number">
+        <input asp-for="@Model.FullName" type="text" id="button" placeholder="Full Name">
+        <button id="button" type="submit">Search</button>
+    </form>
+    <input id="button" type="button" value="Add new room service" class="add">
+    <div class="table">
+        <table class="table-main">
+            <thead>
+                <tr>
+                    <th>Action</th>
+                    <th>Number</th>
+                    <th>Full Name</th>
+                    <th>Outsourcing Company</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.RoomServices)
+                {
+                    <tr>
+                        <td>
+                            <button type="submit" class="roomservice-edit" value="@item.EmployeeNumber">Edit</button>
+                            <a asp-controller="RoomService" asp-action="Roster" asp-route-employeeNumber="@item.EmployeeNumber"><button type="submit">Roster</button></a>
+                        </td>
+                        <td>@item.EmployeeNumber</td>
+                        <td>@item.FullName</td>
+                        <td>@item.OutsourcingCompany</td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr class="tr-tfoot">
+                    @* <td><span>Page 1 of 1</span></td> *@
+                    <td colspan="4">
+                        @if (Model != null) {
+                            <span>
+                                @for (int pageNumber = 1; pageNumber <= Model.Pagination.TotalPages; pageNumber++) {
+                                    <a asp-action="Index" asp-route-pageNumber="@pageNumber" asp-route-employeeNumber="@Model.EmployeeNumber" asp-route-fullName="@Model.FullName">@pageNumber</a>
+                                }
+                            </span>
+                        }
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+<div class="modal">
+    <form action="" method="post" class="form-modal">
+        <table class="table-modal">
+            <tr class="tr-modal">
+                <td class="td-modal"><label for="">Employee Number</label></td>
+                <td class="td-modal"><input type="text" id="employeeNumber"></td>
+            </tr>
+            <tr class="tr-modal">
+                <td class="td-modal"><label for="">First Name</label></td>
+                <td class="td-modal"><input type="text" id="firstName"></td>
+            </tr>
+            <tr class="tr-modal">
+                <td class="td-modal"><label for="">Middle Name</label></td>
+                <td class="td-modal"><input type="text" id="middleName"></td>
+            </tr>
+            <tr class="tr-modal">
+                <td class="td-modal"><label for="">Last Name</label></td>
+                <td class="td-modal"><input type="text" id="lastName"></td>
+            </tr>
+            <tr class="tr-modal">
+                <td class="td-modal"><label for="">Outsourcing Company</label></td>
+                <td class="td-modal"><input type="text" id="outsourcingCompany"></td>
+            </tr>
+            <tr class="tr-modal">
+                <td class="td-modal"></td>
+                <td class="td-modal">
+                    <button type="submit" class="insert-roomservice">Save</button>
+                    <button type="submit" class="update-roomservice">Save</button>
+                    <button type="submit" class="close-roomservice">Close</button>
+                </td>
+            </tr>
+        </table>
+        <div>
+        </div>
+    </form>
+</div>
+
+<script src="~/js/roomservice-script.js" defer></script>

@@ -1,0 +1,66 @@
+@model ReservationInsertViewModel;
+
+<div class="section-container">
+    <form method="post">
+        <table class="table-detail-reservation">
+            <input type="text" value="@Model.Code" asp-for="@Model.Code" hidden>
+            <input type="text" value="@Model.ReservationMethod" asp-for="@Model.ReservationMethod" hidden>
+
+            <tr>
+                <td>Room Number</td>
+                <td><input asp-for="@Model.RoomNumber" value="@Model.Room.Number"></td>
+            </tr>
+            <tr>
+                <td>Floor</td>
+                <td><label>@Model.Room.Floor</label></td>
+            </tr>
+            <tr>
+                <td>Type</td>
+                <td><label>@Model.Room.RoomType</label></td>
+            </tr>
+            <tr>
+                <td>Guest Limit</td>
+                <td><label>@Model.Room.GuestLimit</label></td>
+            </tr>
+            <tr>
+                <td>Cost per night</td>
+                <td><label id="cost">@Model.Room.Cost</label></td>
+            </tr>
+
+            <tr>
+                <td>Check in</td>
+                <td>
+                    <input type="date" asp-for="@Model.CheckIn" id="check-in">
+                </td>
+            </tr>
+            <tr>
+                <td>Check out</td>
+                <td>
+                    <input type="date" asp-for="@Model.CheckOut" id="check-out">
+                </td>
+            </tr>
+
+            <tr>
+                <td>Total Cost</td>
+                <td><input value="@Model.Cost" asp-for="@Model.Cost" id="total-cost"></td>
+            </tr>
+            <tr>
+                <td>Payment Method</td>
+                <td>
+                    <select asp-for="@Model.PaymentMethod" asp-items="@Model.PaymentMethods">
+                        <option value="">Select Payment Method</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Remark</td>
+                <td><textarea asp-for="@Model.Remark" cols="30" rows="10"></textarea></td>
+            </tr>
+            <tr>
+                <td><button type="submit" id="button">Submit Reservation</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<script src="~/js/bookingReservation-script.js" defer></script>

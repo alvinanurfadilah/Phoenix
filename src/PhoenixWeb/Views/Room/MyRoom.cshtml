@@ -1,0 +1,66 @@
+@model MyRoomIndexViewModel;
+
+<div class="section-container-left">
+    <a asp-action="Insert" asp-controller="Reservation" asp-route-number="@Model.RoomNumber"><input id="button" type="button" value="Extand Stay"></a>
+    @foreach(var item in @Model.MyRoom)
+    {
+        <table class="table-detail">
+            <tr>
+                <td>Reservation Code</td>
+                <td>@item.Code</td>
+            </tr>
+            <tr>
+                <td>Reservation Method</td>
+                <td>@item.ReservationMethod</td>
+            </tr>
+            <tr>
+                <td>Room Number</td>
+                <td>@item.RoomNumber</td>
+            </tr>
+            <tr>
+                <td>Room Floor</td>
+                <td>@item.Floor</td>
+            </tr>
+            <tr>
+                <td>Room Type</td>
+                <td>@item.RoomType</td>
+            </tr>
+            <tr>
+                <td>Guest Username</td>
+                <td>@item.GuestUsername</td>
+            </tr>
+            <tr>
+                <td>Guest FullName</td>
+                <td>@item.GuestFullName</td>
+            </tr>
+            <tr>
+                <td>Book Date</td>
+                <td>@item.BookDate</td>
+            </tr>
+            <tr>
+                <td>Check In</td>
+                <td>@item.CheckIn</td>
+            </tr>
+            <tr>
+                <td>Check Out</td>
+                <td>@item.CheckOut</td>
+            </tr>
+            <tr>
+                <td>Cost</td>
+                <td>@item.Cost</td>
+            </tr>
+            <tr>
+                <td>Payment Date</td>
+                <td>@item.PaymentDate</td>
+            </tr>
+            <tr>
+                <td>Payment Method</td>
+                <td>@item.PaymentMethod</td>
+            </tr>
+            <tr>
+                <td>Remark</td>
+                <td>@item.Remark</td>
+            </tr>
+        </table>
+    }
+</div>

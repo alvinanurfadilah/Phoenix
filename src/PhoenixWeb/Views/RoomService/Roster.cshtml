@@ -1,0 +1,46 @@
+@model RoomServiceViewModel;
+
+<div class="section-container-left">
+    <table class="table-detail">
+        <tr>
+            <td>@Model.EmployeeNumber</td>
+        </tr>
+        <tr>
+            <td>@Model.FullName</td>
+        </tr>
+        <tr>
+            <td>@Model.OutsourcingCompany</td>
+        </tr>
+    </table>
+    <a asp-action="RosterUpdate" asp-route-employeeNumber="@Model.EmployeeNumber"><input id="button" type="button" value="Edit Roster"></a>
+    <table class="table-detail">
+        <tr>
+            <td>Monday</td>
+            <td>@Model.MondayRosterStart - @Model.MondayRosterFinish</td>
+        </tr>
+        <tr>
+            <td>Tuesday</td>
+            <td>@Model.TuesdayRosterStart - @Model.TuesdayRosterFinish</td>
+        </tr>
+        <tr>
+            <td>Wednesday</td>
+            <td>@Model.WednesdayRosterStart - @Model.WednesdayRosterFinish</td>
+        </tr>
+        <tr>
+            <td>Thursday</td>
+            <td>@Model.ThursdayRosterStart - @Model.ThursdayRosterFinish</td>
+        </tr>
+        <tr>
+            <td>Friday</td>
+            <td>@Model.FridayRosterStart - @Model.FridayRosterFinish</td>
+        </tr>
+        <tr>
+            <td>Saturday</td>
+            <td>@Model.SaturdayRosterStart - @Model.SaturdayRosterFinish</td>
+        </tr>
+        <tr>
+            <td>Sunday</td>
+            <td>@Model.SundayRosterStart - @Model.SaturdayRosterFinish</td>
+        </tr>
+    </table>
+</div>

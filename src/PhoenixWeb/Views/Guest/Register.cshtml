@@ -1,0 +1,84 @@
+@{
+    Layout = "_LayoutLogin";
+}
+
+@model GuestInsertViewModel;
+
+<div class="container">
+    <h3>Phoenix</h3>
+    <div class="login">
+        <form method="post" class="form-login">
+            <div class="login-space">
+                <div>
+                    <div>
+                        <input asp-for="@Model.Username" type="text" placeholder="Username">
+                    </div>
+                    <span id="alert-input" asp-validation-for="@Model.Username"></span>
+                </div>
+                <div>
+                    <div>
+                        <input asp-for="@Model.Password" type="password" placeholder="Password">
+                    </div>
+                    <span id="alert-input" asp-validation-for="@Model.Password"></span>
+                </div>
+                <div>
+                    <div>
+                        <input asp-for="@Model.ConfirmPassword" type="password" placeholder="Confirm Password">
+                    </div>
+                    <span id="alert-input" asp-validation-for="@Model.ConfirmPassword"></span>
+                </div>
+                <div>
+                    <div>
+                        <input asp-for="@Model.FirstName" type="text" placeholder="First Name">
+                    </div>
+                    <span id="alert-input" asp-validation-for="@Model.FirstName"></span>
+                </div>
+                <div>
+                    <div>
+                        <input asp-for="@Model.MiddleName" type="text" placeholder="Middle Name">
+                    </div>
+                    <span></span>
+                </div>
+                <div>
+                    <div>
+                        <input asp-for="@Model.LastName" type="text" placeholder="Last Name">
+                    </div>
+                    <span></span>
+                </div>
+                <div>
+                    <div>
+                        <span>Birth Date</span> <input asp-for="@Model.BirthDate" type="date" id="date">
+                    </div>
+                    <span id="alert-input" asp-validation-for="@Model.BirthDate"></span>
+                </div>
+                <div>
+                    <div>
+                        @foreach(var item in @Model.Genders) {
+                            <input type="radio" asp-for="@Model.Gender" id="@item.Text" value="@item.Value" class="radio">
+                            <label for="@item.Text">@item.Text</label>
+                        }
+                    </div>
+                    <span id="alert-input" asp-validation-for="@Model.Gender"></span>
+                </div>
+                <div>
+                    <div>
+                        <input asp-for="Citizenship" type="text" placeholder="Citizenship">
+                    </div>
+                    <span id="alert-input" asp-validation-for="@Model.Citizenship"></span>
+                </div>
+                <div>
+                    <div>
+                        <input asp-for="IdNumber" type="text" placeholder="ID Number">
+                    </div>
+                    <span id="alert-input" asp-validation-for="@Model.IdNumber"></span>
+                </div>
+                <div>
+                    <button type="submit">Register</button>
+                </div>
+                <div>
+                    <a asp-controller="Account" asp-action="Index">Login page</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

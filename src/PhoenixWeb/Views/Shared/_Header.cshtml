@@ -1,0 +1,47 @@
+@{
+    string? username = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? string.Empty;
+    string? jobTitle = User.FindFirst("JobTitle")?.Value ?? string.Empty;
+}
+
+<div class="container-header">
+    <div class="header-one">
+        @* Account *@
+    </div>
+    <div class="header-two">
+        @if (User.FindFirst(System.Security.Claims.ClaimTypes.Role)?.Value == "Admin")
+        {
+            <span class="username">@username - @jobTitle</span>
+        } else{
+            <span class="username">@username</span>
+        }
+        <input class="changePassword" id="button" type="button" value="Change Password">
+        <a asp-controller="Account" asp-action="Logout"><input id="button" type="button" value="Logout"></a>
+    </div>
+</div>
+
+
+<div class="modal-change-password">
+    <form action="" method="post" class="form-modal">
+        <table class="table-modal">
+            <tr class="tr-modal">
+                <td class="td-modal"><input type="password" name="" id="old-password" placeholder="Old Password"></td>
+            </tr>
+            <tr class="tr-modal">
+                <td class="td-modal"><input type="password" name="" id="new-password" placeholder="New Password"></td>
+            </tr>
+            <tr class="tr-modal">
+                <td class="td-modal"><input type="password" name="" id="confirm-password" placeholder="Confirm Password"></td>
+            </tr>
+            <tr class="tr-modal">
+                <td class="td-modal">
+                    <button type="submit" class="update-change-password">Save</button>
+                    <button class="close-change-password">Close</button>
+                </td>
+            </tr>
+        </table>
+        <div>
+        </div>
+    </form>
+</div>
+
+<script src="~/js/account-script.js" defer></script>

@@ -1,0 +1,44 @@
+@model RoomInsertViewModel;
+
+<div class="section-container">
+    <form action="" method="post">
+        <table class="table-form">
+            <tr class="tr-form">
+                <td class="td-form">Number*</td>
+                <td class="td-form"><input type="text" asp-for="@Model.Number"></td>
+                <td class="td-form"><span id="alert-input" asp-validation-for="@Model.Number"></span></td>
+            </tr>
+            <tr class="tr-form">
+                <td class="td-form">Floor*</td>
+                <td class="td-form"><input type="number" asp-for="@Model.Floor"></td>
+                <td class="td-form"><span id="alert-input" asp-validation-for="@Model.Floor"></span></td>
+            </tr>
+            <tr class="tr-form">
+                <td class="td-form">Room Type*</td>
+                <td class="td-form"><input type="string" asp-for="@Model.RoomType"></td>
+                <td class="td-form"><span id="alert-input" asp-validation-for="@Model.RoomType"></span></td>
+            </tr>
+            <tr class="tr-form">
+                <td class="td-form">Guest Limit*</td>
+                <td class="td-form"><input type="number" asp-for="@Model.GuestLimit"></td>
+                <td class="td-form"><span id="alert-input" asp-validation-for="@Model.GuestLimit"></span></td>
+            </tr>
+            <tr class="tr-form">
+                <td class="td-form">Cost*</td>
+                <td class="td-form"><input type="number" asp-for="@Model.Cost"></td>
+                <td class="td-form"><span id="alert-input" asp-validation-for="@Model.Cost"></span></td>
+            </tr>
+            <tr class="tr-form">
+                <td class="td-form">Description</td>
+                <td class="td-form"><input asp-for="@Model.Description" cols="45" rows="10"></td>
+            </tr>
+            <tr class="tr-form">
+                <td class="td-form"></td>
+                <td class="td-form">
+                    <button type="submit" id="button">Save</button>
+                    <a asp-controller="Room" asp-action="Index"><button type="button" id="button">Close</button></a>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>

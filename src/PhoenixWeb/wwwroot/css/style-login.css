@@ -1,0 +1,44 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login{
+    text-align: center;
+    border: 1px solid;
+    border-radius: 5px;
+    width: 450px;
+}
+
+.form-login{
+    padding: 10px;
+}
+
+.login-space div{
+    padding-top: 5px;
+}
+
+input, select{
+    width: 300px;
+    height: 30px;
+}
+
+#date{
+    width: 230px;
+}
+
+.radio{
+    width: auto;
+    height: auto;
+}
+
+button{
+    width: 300px;
+    height: 30px;
+}
+
+#alert-input{
+    font-size: small;
+    color: red;
+}

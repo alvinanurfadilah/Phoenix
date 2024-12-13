@@ -1,0 +1,59 @@
+@model BookingIndexViewModel;
+
+<div class="section-container">
+    <form class="search" action="" method="get">
+        <input asp-for="@Model.Number" type="text" id="button" placeholder="Number">
+        <select asp-for="@Model.Type" id="button" asp-items="@Model.SearchType">
+            <option value="">All Type</option>
+        </select>
+        <select name="" id="button">
+            <option value="">All Status</option>
+        </select>
+        <button id="button" type="submit">Search</button>
+    </form>
+    <div class="table">
+        <table class="table-main">
+            <thead>
+                <tr>
+                    <th>Action</th>
+                    <th>Number</th>
+                    <th>Floor</th>
+                    <th>Type</th>
+                    <th>Guest Limit</th>
+                    <th>Cost per Day</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Bookings)
+                {
+                    <tr>
+                        <td>
+                            <a asp-controller="Booking" asp-action="Detail" asp-route-number="@item.Number"><button type="submit">Detail</button></a>
+                        </td>
+                        <td>@item.Number</td>
+                        <td>@item.Floor</td>
+                        <td>@item.RoomType</td>
+                        <td>@item.GuestLimit</td>
+                        <td>@item.Cost</td>
+                        <td>sample text</td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr class="tr-tfoot">
+                    @* <td><span>Page 1 of 1</span></td> *@
+                    <td colspan="7">
+                        @if (Model != null) {
+                            <span>
+                                @for (int pageNumber = 1; pageNumber <= Model.Pagination.TotalPages; pageNumber++) {
+                                    <a asp-action="Index" asp-route-pageNumber="@pageNumber" asp-route-number="@Model.Number">@pageNumber</a>
+                                }
+                            </span>
+                        }
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
